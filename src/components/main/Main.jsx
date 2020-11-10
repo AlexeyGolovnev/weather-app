@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container, Title, SubTitle, Text } from './../../globalStyles'
 import { 
     MainSection, 
@@ -12,7 +12,6 @@ import {
     MainIconBox,
     MainIcon,
     MainTemperatureBox,
-    MainTextBox,
 }
 from "./Main.elements";
 
