@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
-import bg from './assets/background.jpg'
+import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import bg from "./assets/background.jpg";
 
 const GlobalStyle = createGlobalStyle`
     html, body {
@@ -8,11 +8,12 @@ const GlobalStyle = createGlobalStyle`
         height:100%;
         margin:0;
         padding:0;
-        font-size:20px;
+        font-size:16  px;
         font-weight:100;
         font-family:'Roboto', sans-serif;
         color:#fff;
         background:url(${bg}) no-repeat center / cover; 
+        background-attachment: fixed;
     }
     h1, h2, h3, h4, h5, h6, p {
         margin:0;
@@ -21,32 +22,32 @@ const GlobalStyle = createGlobalStyle`
     *{
         box-sizing:border-box;
     }
-`
+`;
 export const Container = styled.div`
-    max-width:1440px;
-    width:100%;
-    padding: 0 30px;
-    margin:0 auto;
-`
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 30px;
+  margin: 0 auto;
+
+`;
 
 export const HeroTitle = styled.h1`
-    font-size:2rem;
-    text-transform:uppercase;
-    font-weight:100;
-
-`
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 100;
+`;
 export const Title = styled.h2`
-    font-size: 3rem;
-    font-weight: ${({bold}) => bold ? 500 : 100};
-`
+  font-size: 3rem;
+  font-weight: ${({ bold }) => (bold ? 500 : 100)};
+`;
 
 export const SubTitle = styled.span`
-    font-size:1.8rem;
-`
+  font-size: 1.8rem;
+  font-weight: ${({ bold }) => (bold ? "500" : "100")};
+`;
 export const Text = styled.span`
-    font-size:${({ big }) => big ? '5rem' : '1rem'};
-    font-weight:${({ bold }) => bold ? '500' : '100'};
-`
+  font-size: ${({ big }) => (big ? "5rem" : "2rem")};
+  font-weight: ${({ bold }) => (bold ? "500" : "100")};
+`;
 
-
-export default GlobalStyle; 
+export default GlobalStyle;

@@ -6,14 +6,14 @@ const instance = axios.create({
 })
 const date = new Date();
 
-export function getCurrentWeather(city) {
-    instance.get(`current.json?${API_KEY}&q=${city}`);
+export function getCurrentWeatherFromApi(city) {
+    return instance.get(`current.json?key=${API_KEY}&q=${city}`);
 }
 
-export function getForecastWeather(city) {
-    instance.get(`forecast.json?${API_KEY}&q=${city}&days=7`);
+export function getForecastWeatherFromApi(city) {
+    return instance.get(`forecast.json?key=${API_KEY}&q=${city}&days=7`);
 }
 
-export function getAstronomyWeather(city) {
-    instance.get(`astronomy.json?${API_KEY}&q=${city}&dt=${date.getFullYear()}-${date.getMonth()}-${date.getDate}`);
+export function getAstronomyWeatherFromApi(city) {
+    return instance.get(`astronomy.json?key=${API_KEY}&q=${city}&dt=${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`);
 }

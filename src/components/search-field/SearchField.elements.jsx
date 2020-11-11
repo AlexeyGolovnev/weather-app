@@ -28,7 +28,7 @@ export const SearchFieldInput = styled.input`
     color:#8a8a8a;
     font-family:'Roboto', sans-serif;
     font-size:1.2rem;
-    font-weight:100;
+    font-weight:400;
     letter-spacing:1px;
     box-shadow: 0 0 15px 1px #8a8a8a;
 `;
