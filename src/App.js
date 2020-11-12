@@ -1,8 +1,8 @@
 import React from 'react';
+import GlobalStyle from './globalStyles';
 import { Header, SearchField, Main } from './components';
 import { DispatchContext } from './dispatchContext';
-import GlobalStyle from './globalStyles';
-import  { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function App() {
     const dispatch = useDispatch();

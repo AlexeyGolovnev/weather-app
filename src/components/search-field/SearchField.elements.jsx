@@ -34,10 +34,10 @@ export const SearchFieldInput = styled.input`
 `;
 
 export const SearchFieldIcon = styled(FiSearch)`
-    position:absolute;
+    /* position:absolute;
     color:#8a8a8a;
     z-index:100;
     top:16px;
-    left:15px;
+    left:15px; */
 
 `

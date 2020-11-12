@@ -13,13 +13,16 @@ export const MainContainer = styled.div`
 
 export const MainHeader = styled.div`
     margin-bottom: 2.5rem;
+    padding: 0 50px;
 `;
 
 export const MainBody = styled.div`
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     flex-wrap:wrap;
+    padding: 0 50px;
+    margin-bottom:50px;
 `;
 
 export const MainFooter = styled.div``;
@@ -61,7 +64,7 @@ export const MainWeatherAdditionalDataBox = styled.div`
     max-width:100%;
     grid-template-columns: repeat(auto-fit, 180px);
     grid-gap: 10px;
-   // justify-content: center;
+    justify-content: center;
     align-items:center; 
     text-align:center;
     padding:10px 0;

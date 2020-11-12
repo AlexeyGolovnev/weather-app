@@ -1,23 +1,33 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { DispatchContext } from '../../dispatchContext';
 import { Container } from '../../globalStyles'
-import { getCurrentWeather, getAstronomyWeather } from '../../redux/actions';
+import { getCurrentWeather, getAstronomyWeather, getForecastWeather } from '../../redux/actions';
 import { SearchFieldContainer, SearchFieldInput, SearchFieldIcon, SearchFieldInputBox } from './SearchField.elements';
+
 export default function SearchField() {
     const { dispatch } = useContext(DispatchContext);
     const [city, setCity] = useState('');
+    const [enterClicked, setEnterClicked] = useState(false);
 
     const handleKeyDown = (e) => {
         if(e.keyCode === 13) {
-            if(city.length) {
-                dispatch(getCurrentWeather(city))
-                dispatch(getAstronomyWeather(city));
-            } 
+            setEnterClicked(true);
         }
     }
+
     const handleInput = (e) => {
         setCity(e.target.value)
     }
+
+    useEffect(() => {
+        if(enterClicked && city.length) {
+            dispatch(getCurrentWeather(city))
+            dispatch(getAstronomyWeather(city));
+            dispatch(getForecastWeather(city));
+            setEnterClicked(false);
+        }
+    }, [enterClicked]);
+
     return (
         <Container>
             <SearchFieldContainer>

@@ -8,12 +8,15 @@ const GlobalStyle = createGlobalStyle`
         height:100%;
         margin:0;
         padding:0;
-        font-size:16  px;
+        font-size:16px;
         font-weight:100;
         font-family:'Roboto', sans-serif;
         color:#fff;
         background:url(${bg}) no-repeat center / cover; 
         background-attachment: fixed;
+        @media screen and (max-width:1368px) {
+            font-size:11px;
+        }
     }
     h1, h2, h3, h4, h5, h6, p {
         margin:0;

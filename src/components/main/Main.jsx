@@ -16,12 +16,13 @@ import {
     MainTemperatureBox,
 }
 from "./Main.elements";
+import ForecastWeather from './../forecast-weather/ForecastWeather';
 import MainAdditionalDataItem from './MainAdditionalDataItem'
 import { FiWind, FiCloud, FiSunrise, FiSunset } from 'react-icons/fi'
 import { WiHumidity } from 'react-icons/wi';
 import { RiRainyLine } from 'react-icons/ri';
-export default function Main() {
 
+export default function Main() {
     const location = useSelector(state => state.currentWeather.location);
     const current = useSelector(state => state.currentWeather.current)
     const astronomy = useSelector(state => state.astronomyWeather.astronomy);
@@ -55,15 +56,15 @@ export default function Main() {
                     <MainContainer>
                         <MainHeader>
                             <MainTitleBox>
-                                <Title bold>{location ? location.name : ''}</Title>
-                                <Title>{location ? location.country : ''}</Title>
+                                <Title bold>{location ? location.name + ', ' + location.country : ''}</Title>
+                                {/* <Title>{location ? location.country : ''}</Title> */}
                             </MainTitleBox>
                             <SubTitle>{date}</SubTitle>
                         </MainHeader>
                         <MainBody>
                             <MainWeatherDataBox>
                                 <MainTemperatureBox>
-                                        <Text big bold>
+                                        <Text big>
                                         {current ? `${current.temp_c}${deg}`: ''}
                                         </Text>
                                 </MainTemperatureBox>
@@ -78,7 +79,7 @@ export default function Main() {
                         </MainBody>
 
                         <MainFooter>
-
+                            <ForecastWeather></ForecastWeather>
                         </MainFooter>
                     </MainContainer>
                 </Container>
