@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FiSearch } from 'react-icons/fi'
 
-export const SearchFieldContainer = styled.div`
+export const SearchFieldContainer = styled.section`
     display:flex;
     justify-content:center;
     align-items:center;

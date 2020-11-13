@@ -65,6 +65,7 @@ export function getForecastWeather(city) {
         await getForecastWeatherFromApi(city)
         .then((response) => {
             if(response.status === 200) {
+                console.log(response);
                   dispatch({
                       type:GET_FORECAST_WEATHER,
                       payload:response

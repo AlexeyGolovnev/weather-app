@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
         background:url(${bg}) no-repeat center / cover; 
         background-attachment: fixed;
         @media screen and (max-width:1368px) {
-            font-size:11px;
+            font-size:13px;
         }
     }
     h1, h2, h3, h4, h5, h6, p {
@@ -31,6 +31,13 @@ export const Container = styled.div`
   width: 100%;
   padding: 0 30px;
   margin: 0 auto;
+  @media screen and (max-width:767px) {
+    padding:15px;
+  }
+  @media screen and (max-width:550px) {
+    padding:5px;
+  }
+
 
 `;
 
@@ -45,12 +52,13 @@ export const Title = styled.h2`
 `;
 
 export const SubTitle = styled.span`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: ${({ bold }) => (bold ? "500" : "100")};
 `;
 export const Text = styled.span`
-  font-size: ${({ big }) => (big ? "5rem" : "2rem")};
+  font-size: ${({ big }) => (big ? "5rem" : "1.5rem")};
   font-weight: ${({ bold }) => (bold ? "500" : "100")};
 `;
+
 
 export default GlobalStyle;

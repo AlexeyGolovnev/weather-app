@@ -1,3 +1,3 @@
-export { default as Header } from './header/Header'
-export { default as SearchField } from './search-field/SearchField';
-export { default as Main} from './main/Main';
+export { default as Header } from './Header/Header'
+export { default as SearchField } from './SearchField/SearchField';
+export { default as Main} from './Main/Main';
