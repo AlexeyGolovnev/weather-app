@@ -1,21 +1,34 @@
 import { 
-    GET_CURRENT_WEATHER, 
-    // GET_CURRENT_WEATHER_FAILED, 
-    // GET_CURRENT_WEATHER_SUCCEEDED,
-    // GET_CURRENT_WEATHER_PENDING 
-} from "../actionsTypes";
+    FETCH_CURRENT_WEATHER_REQUEST,
+    FETCH_CURRENT_WEATHER_SUCCESS,
+    FETCH_CURRENT_WEATHER_FAILURE,
+} from './../actionsTypes';
 
 const initialState = {
-    pending: false,
-    succeeded: false,
-    failed:false,
+   loading:false,
+   data:{},
+   error:'',
 }
 export function currentWeatherReducer(state = initialState, action) {
     switch (action.type) {
-        case GET_CURRENT_WEATHER: {
+        case FETCH_CURRENT_WEATHER_REQUEST: {
             return ({
                 ...state,
-                ...action.payload.data,
+                loading: true,
+            })
+        }
+        case FETCH_CURRENT_WEATHER_SUCCESS: {
+            return ({
+                loading: false,
+                data: {...action.payload.data},
+                error: '',
+            })
+        }
+        case FETCH_CURRENT_WEATHER_FAILURE: {
+            return ({
+                loading: false,
+                data: {},
+                error: action.payload.error.message,
             })
         }
         default: return state;

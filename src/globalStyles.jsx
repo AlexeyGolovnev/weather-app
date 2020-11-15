@@ -17,6 +17,9 @@ const GlobalStyle = createGlobalStyle`
         @media screen and (max-width:1368px) {
             font-size:13px;
         }
+        @media screen and (max-width:424px) {
+            font-size:11px;
+        }
     }
     h1, h2, h3, h4, h5, h6, p {
         margin:0;
@@ -37,8 +40,6 @@ export const Container = styled.div`
   @media screen and (max-width:550px) {
     padding:5px;
   }
-
-
 `;
 
 export const HeroTitle = styled.h1`
@@ -50,15 +51,23 @@ export const Title = styled.h2`
   font-size: 3rem;
   font-weight: ${({ bold }) => (bold ? 500 : 100)};
 `;
-
 export const SubTitle = styled.span`
   font-size: 1.5rem;
-  font-weight: ${({ bold }) => (bold ? "500" : "100")};
+  font-weight: ${({ bold }) => (bold ? "400" : "100")};
 `;
 export const Text = styled.span`
   font-size: ${({ big }) => (big ? "5rem" : "1.5rem")};
-  font-weight: ${({ bold }) => (bold ? "500" : "100")};
+  font-weight: ${({ bold }) => (bold ? "400" : "100")};
 `;
 
+export const LoaderBox = styled.div`
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+`
 
 export default GlobalStyle;

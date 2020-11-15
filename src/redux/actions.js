@@ -1,80 +1,97 @@
-import { getCurrentWeatherFromApi, getAstronomyWeatherFromApi, getForecastWeatherFromApi } from './../api/api'
 import { 
-    GET_CURRENT_WEATHER,
-    // GET_CURRENT_WEATHER_FAILED,
-    // GET_CURRENT_WEATHER_PENDING, 
-    // GET_CURRENT_WEATHER_SUCCEEDED,
-    GET_ASTRONOMY_WEATHER,
-    GET_FORECAST_WEATHER,
-    // GET_ASTRONOMY_WEATHER_PENDING,
-    // GET_ASTRONOMY_WEATHER_SUCCEEDED,
-    // GET_ASTRONOMY_WEATHER_FAILED
+    getCurrentWeatherFromApi, 
+    getAstronomyWeatherFromApi, 
+    getForecastWeatherFromApi 
+} from './../api/api';
+import { 
+    FETCH_CURRENT_WEATHER_REQUEST,
+    FETCH_CURRENT_WEATHER_SUCCESS,
+    FETCH_CURRENT_WEATHER_FAILURE,
+    FETCH_ASTRONOMY_WEATHER_REQUEST,
+    FETCH_ASTRONOMY_WEATHER_SUCCESS,
+    FETCH_ASTRONOMY_WEATHER_FAILURE,
+    FETCH_FORECAST_WEATHER_REQUEST,
+    FETCH_FORECAST_WEATHER_SUCCESS,
+    FETCH_FORECAST_WEATHER_FAILURE,
 } from './actionsTypes';
 
 export function getCurrentWeather(city) {
-    return async function (dispatch) {
-      // dispatch({type:GET_CURRENT_WEATHER_PENDING});
-       await getCurrentWeatherFromApi(city)
-        .then(response => {
+    return async function(dispatch) {
+        dispatch({type: FETCH_CURRENT_WEATHER_REQUEST})
+        await getCurrentWeatherFromApi(city)
+        .then((response) => {
             if(response.status === 200) {
-               // dispatch({type:GET_CURRENT_WEATHER_SUCCEEDED})
                 dispatch({
-                    type:GET_CURRENT_WEATHER,
-                    payload:response
+                    type: FETCH_CURRENT_WEATHER_SUCCESS,
+                    payload: response,
+                })
+            } 
+            else {
+                dispatch({
+                    type: FETCH_CURRENT_WEATHER_FAILURE,
+                    payload: response
                 })
             }
-            else {
-               // dispatch({type:GET_CURRENT_WEATHER_FAILED});
-            }
         })
-        .catch((err) => {
-            //dispatch({type:GET_CURRENT_WEATHER_FAILED});
-            alert(err);
-        })
-
-    } 
- 
+        .catch((error) => {
+            dispatch({
+                type: FETCH_CURRENT_WEATHER_FAILURE,
+                payload: error.message
+            })
+         });
+    }
 }
 
 export function getAstronomyWeather(city) {
     return async function (dispatch) {
-       // dispatch({type:GET_ASTRONOMY_WEATHER_PENDING});
+        dispatch({type: FETCH_ASTRONOMY_WEATHER_REQUEST})
         await getAstronomyWeatherFromApi(city)
-         .then(response => {
-             if(response.status === 200) {
-               //  dispatch({type:GET_ASTRONOMY_WEATHER_SUCCEEDED})
-                 dispatch({
-                     type:GET_ASTRONOMY_WEATHER,
-                     payload:response
-                 })
-             }
-             else {
-                 //dispatch({type:GET_ASTRONOMY_WEATHER_FAILED});
-             }
-         })
-         .catch((err) => {
-            // dispatch({type:GET_ASTRONOMY_WEATHER_FAILED});
-            alert(err);
-         })
- 
-     } 
+        .then((response) => {
+            if(response.status === 200) {
+                dispatch({
+                    type: FETCH_ASTRONOMY_WEATHER_SUCCESS,
+                    payload: response,
+                })
+            } 
+            else {
+                dispatch({
+                    type: FETCH_ASTRONOMY_WEATHER_FAILURE,
+                    payload: response
+                })
+            }
+        })
+        .catch((err) => {
+            dispatch({
+                type: FETCH_ASTRONOMY_WEATHER_FAILURE,
+                payload: err
+            })
+            });
+    }
 }
 
 export function getForecastWeather(city) {
     return async function(dispatch) {
+        dispatch({type: FETCH_FORECAST_WEATHER_REQUEST})
         await getForecastWeatherFromApi(city)
         .then((response) => {
             if(response.status === 200) {
-                console.log(response);
-                  dispatch({
-                      type:GET_FORECAST_WEATHER,
-                      payload:response
-                  })
-              }
+                dispatch({
+                    type: FETCH_FORECAST_WEATHER_SUCCESS,
+                    payload: response,
+                })
+            } 
+            else {
+                dispatch({
+                    type: FETCH_FORECAST_WEATHER_FAILURE,
+                    payload: response
+                })
+            }
         })
         .catch((err) => {
-            alert(err);
+            dispatch({
+                type: FETCH_FORECAST_WEATHER_FAILURE,
+                payload: err
+            })
          });
-        
     }
 }

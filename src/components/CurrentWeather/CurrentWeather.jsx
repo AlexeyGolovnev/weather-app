@@ -41,7 +41,7 @@ export default function CurrentWeather({ temp_c, condition, wind_kph, humidity, 
         <CurrentWeatherContainer>
             <CurrentWeatherMainData>
                 <CurrentWeatherTemperatureBox>
-                    <CurrentWeatherTemperature>{temp_c + deg}</CurrentWeatherTemperature>
+                    <CurrentWeatherTemperature>{Math.floor(temp_c) + deg}</CurrentWeatherTemperature>
                 </CurrentWeatherTemperatureBox>
                 <CurrentWeatherIconBox>
                     <CurrentWeatherIcon src = {condition?.icon} />

@@ -1,14 +1,35 @@
-import { GET_FORECAST_WEATHER } from './../actionsTypes';
+import { 
+    FETCH_FORECAST_WEATHER_REQUEST,
+    FETCH_FORECAST_WEATHER_SUCCESS,
+    FETCH_FORECAST_WEATHER_FAILURE,
+} from './../actionsTypes';
 
 const initialState = {
+   loading:false,
+   data:{},
+   error:'',
 }
 export function forecastWeatherReducer(state = initialState, action) {
     switch (action.type) {
-        case GET_FORECAST_WEATHER: {
-            return {
+        case FETCH_FORECAST_WEATHER_REQUEST: {
+            return ({
                 ...state,
-                ...action.payload.data,
-            }
+                loading: true,
+            })
+        }
+        case FETCH_FORECAST_WEATHER_SUCCESS: {
+            return ({
+                loading: false,
+                data: {...action.payload.data},
+                error: '',
+            })
+        }
+        case FETCH_FORECAST_WEATHER_FAILURE: {
+            return ({
+                loading: false,
+                data: {},
+                error: action.payload.error.message,
+            })
         }
         default: return state;
     }

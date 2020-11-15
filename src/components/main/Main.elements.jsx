@@ -16,15 +16,9 @@ export const MainBody = styled.div`
     display:flex;
     align-items:flex-start;
     flex-wrap:wrap;
-   // min-height:150px;
     margin-bottom:1rem;
 `;
-
 export const MainFooter = styled.div``;
 export const MainTitleBox = styled.div`
     margin-bottom:1rem;
 `;
-export const MainFooterSubtitleBox = styled.div`
-    margin-bottom:10px;
-`
-

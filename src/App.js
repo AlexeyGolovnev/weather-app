@@ -13,10 +13,9 @@ function App() {
                 <GlobalStyle />
                 <Header />
                 <SearchField />
-                <Main />
+                <Main /> 
             </DispatchContext.Provider>
         </IconContext.Provider>
-       
     );
 }
 export default App;

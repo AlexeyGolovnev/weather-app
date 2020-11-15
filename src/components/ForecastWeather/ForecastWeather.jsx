@@ -1,52 +1,54 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import ForecastWeatherItem from './ForecastWeatherHourItem';
+import ForecastWeatherDayItem from './ForecastWeatherDayItem';
+import Carousel from './../Carousel/Carousel'
 import { 
     ForecastWeatherContainer, 
-    ForecastWeatherSubtitleBox
+    ForecastWeatherSubtitleBox,
+    ForecastWeatherCarouselBox,
+    ForecastWeatherTwoDaysBox
 }
 from './ForecastWeather.elements'
-import ForecastWeatherItem from './ForecastWeatherHourItem';
-import Carousel from './../Carousel/Carousel'
 import { SubTitle } from '../../globalStyles';
 
-export default function ForecastWeather() {
-    const forecastDays = useSelector(state => state.forecastWeather.forecast?.forecastday);
+export default function ForecastWeather({ forecastDays }) {
     let forecastHours = null;
     let forecastTwoDays = null;
-    if(forecastDays) {
-        forecastHours = forecastDays[0].hour.map((item, index) => {
-            return (
-                <ForecastWeatherItem 
-                    key = {index}
-                    time = {item.time.split(' ')[1]}
-                    icon = {item.condition.icon}  
-                    temperature = {Math.floor(item.temp_c)}
-                />
-            ) 
-        });
-
-        forecastTwoDays = forecastDays.map((item, index) => {
-            return index !== 0 && (
-                <ForecastWeatherItem  
-                    key = {index} 
-                    time = {item.day.condition.text}
-                    icon = {item.day.condition.icon}
-                    temperature = {Math.floor(item.day.avgtemp_c)}
-                />
-            )
-        })
-    }
-
+    forecastHours = forecastDays[0].hour.map((item, index) => {
+        return (
+            <ForecastWeatherItem 
+                key = {index}
+                time = {item.time.split(' ')[1]}
+                icon = {item.condition.icon}  
+                temperature = {Math.floor(item.temp_c)}
+                description = {item.condition.text}
+            />
+        ) 
+    });
+    forecastTwoDays = forecastDays.map((item, index) => {
+        return index !== 0 && (
+            <ForecastWeatherDayItem  
+                key = {index} 
+                date = {item.date}
+                astro = {item.astro}
+                day = {item.day}
+            />
+        )
+    })
     return (
         <ForecastWeatherContainer>
             <ForecastWeatherSubtitleBox>
-                <SubTitle >Day Forecast</SubTitle>
+                <SubTitle bold>Day Forecast</SubTitle>
             </ForecastWeatherSubtitleBox>
-            <Carousel data = {forecastHours} />
+            <ForecastWeatherCarouselBox>
+                <Carousel data = {forecastHours} />
+            </ForecastWeatherCarouselBox>
             <ForecastWeatherSubtitleBox>
-                <SubTitle >Forecast 2 next days</SubTitle>
+                <SubTitle bold>Forecast 2 next days</SubTitle>
             </ForecastWeatherSubtitleBox>
-            {forecastTwoDays}
+            <ForecastWeatherTwoDaysBox>
+                {forecastTwoDays}
+            </ForecastWeatherTwoDaysBox>
         </ForecastWeatherContainer>
     )
 }
