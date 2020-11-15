@@ -1,6 +1,5 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { createSelector } from 'reselect'
 import { useSelector } from 'react-redux';
 import { Container, Title, SubTitle, LoaderBox } from '../../globalStyles'
 import { 

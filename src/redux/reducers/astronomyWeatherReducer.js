@@ -28,7 +28,7 @@ export function astronomyWeatherReducer(state = initialState, action) {
             return ({
                 loading: false,
                 data: {},
-                error: action.payload.error.message,
+                error: action.payload.err.message,
             })
         }
         default: return state;

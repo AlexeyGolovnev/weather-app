@@ -36,7 +36,7 @@ export function getCurrentWeather(city) {
         .catch((error) => {
             dispatch({
                 type: FETCH_CURRENT_WEATHER_FAILURE,
-                payload: error.message
+                payload: { err: error.message }
             })
          });
     }
@@ -60,10 +60,10 @@ export function getAstronomyWeather(city) {
                 })
             }
         })
-        .catch((err) => {
+        .catch((error) => {
             dispatch({
                 type: FETCH_ASTRONOMY_WEATHER_FAILURE,
-                payload: err
+                payload: { err: error.message }
             })
             });
     }
@@ -87,10 +87,10 @@ export function getForecastWeather(city) {
                 })
             }
         })
-        .catch((err) => {
+        .catch((error) => {
             dispatch({
                 type: FETCH_FORECAST_WEATHER_FAILURE,
-                payload: err
+                payload: { err: error.message }
             })
          });
     }
