@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { animated } from 'react-spring';
 import bg from "./assets/background.jpg";
 
 const GlobalStyle = createGlobalStyle`
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
             font-size:13px;
         }
         @media screen and (max-width:424px) {
-            font-size:11px;
+            font-size:12px;
         }
     }
     h1, h2, h3, h4, h5, h6, p {
@@ -29,10 +30,15 @@ const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
     }
 `;
+export const AppContainer = styled(animated.div)`
+  width:100%;
+  height:100%;
+`
 export const Container = styled.div`
+
   max-width: 1600px;
-  width: 100%;
-  padding: 0 30px;
+  min-width: 100%;
+  padding: 0 50px;
   margin: 0 auto;
   @media screen and (max-width:767px) {
     padding:15px;
@@ -41,14 +47,13 @@ export const Container = styled.div`
     padding:5px;
   }
 `;
-
 export const HeroTitle = styled.h1`
   font-size: 2rem;
   text-transform: uppercase;
   font-weight: 100;
 `;
 export const Title = styled.h2`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: ${({ bold }) => (bold ? 500 : 100)};
 `;
 export const SubTitle = styled.span`
@@ -59,7 +64,6 @@ export const Text = styled.span`
   font-size: ${({ big }) => (big ? "5rem" : "1.5rem")};
   font-weight: ${({ bold }) => (bold ? "400" : "100")};
 `;
-
 export const LoaderBox = styled.div`
     position:absolute;
     display:flex;

@@ -1,20 +1,23 @@
 import styled from 'styled-components';
 import { FiSearch } from 'react-icons/fi'
 
-export const SearchFieldContainer = styled.section`
+export const SearchFieldSection = styled.section`
+`;
+
+export const SearchFieldContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:2.5rem 0;
-`;
-
+    padding:2rem 0;
+    width:100%;
+`
 export const SearchFieldInputBox = styled.div`
     position:relative;
     display:flex;
     justify-content:center;
     align-items:center;
-    max-width:100%;
-    min-width:50%;
+    width:700px;
+    min-width:300px;
 `
 
 export const SearchFieldInput = styled.input`   
@@ -24,20 +27,39 @@ export const SearchFieldInput = styled.input`
     border-radius:25px;
     border:none;
     outline:none;
-    padding:0 2.2rem;
-    color:#8a8a8a;
+    padding:0 1.5rem;
+    color:#000;
     font-family:'Roboto', sans-serif;
     font-size:1.2rem;
     font-weight:400;
     letter-spacing:1px;
     box-shadow: 0 0 15px 1px #8a8a8a;
+    
+    &::placeholder {
+        color: #8a8a8a;
+    }
 `;
 
 export const SearchFieldIcon = styled(FiSearch)`
-    /* position:absolute;
-    color:#8a8a8a;
-    z-index:100;
-    top:16px;
-    left:15px; */
+    stroke:#000;
+    font-size:1.2rem;
 
+
+`
+export const SearchButton = styled.button`
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    border:none;
+    outline:none;
+    width:50px;
+    background-color:transparent;
+    border-left:1px solid #e4e4e4;
+    cursor:pointer;
+    &:hover{
+        background-color:#ffffff;
+    }
 `

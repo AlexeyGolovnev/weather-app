@@ -75,13 +75,13 @@ export const ForecastWeatherDayItemContainer = styled.div`
     &:not(:last-child) {
         margin-right:10px;
     }
-    width:700px;
-
+    width:600px;
     @media screen and (max-width:767px) {
         width:100%;
         &:not(:last-child) {
             margin-right:0;
         }
+        justify-content:center;
     }
   
 `;
@@ -89,7 +89,7 @@ export const ForecastWeatherDayItemDate = styled.span`
     width:100%;
     border-bottom:1px solid #fff;
     text-align:center;
-    font-size:1.5rem;
+    font-size:1.2rem;
     font-weight:400;
     padding:10px;
 `;
@@ -97,30 +97,29 @@ export const ForecastWeatherDayItemInfoBox = styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding: 0 0;
     @media screen and (max-width:767px) {
         flex-direction:column;
     }
-    padding: 0 0;
 `;
 export const ForecastWeatherDayItemMainInfoBox = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    border-right:1px solid #fff;
-    padding: 0 10px;
-    text-align:center;
-    width:220px;
     height:100%;
+    border-right:1px solid #fff;
+    padding: 10px;
+    text-align:center;
     @media screen and (max-width:767px) {
         border-right: none;
         border-bottom: 1px solid #fff;
         width:100%;
-        padding: 10px;
+        padding: 5px;
     }
 `;
 export const ForecastWeatherDayItemMainInfoTemp = styled.span`
-    font-size:2rem;
+    font-size:1.5rem;
     font-weight:400;
 `;
 export const ForecastWeatherDayItemMainInfoIcon = styled.img`
@@ -131,7 +130,38 @@ export const ForecastWeatherDayItemMainInfoDesc = styled.span`
 `;
 export const ForecastWeatherDayItemAddInfoBox = styled.div`
     display:grid;
-    grid-template-columns:repeat(3, minmax(80px,150px));
+    grid-template-columns:repeat(3, minmax(0,150px));
     grid-gap:10px;
-    padding: 10px 10px;
+    padding: 10px 0;
+`;
+
+export const ForecastWeatherAddInfoItemContainer = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+        svg {
+            fill:#1eb4ed; 
+        }
+    };
+    &:nth-child(5), &:nth-child(6) {
+        svg {
+            fill: #ffff00;
+        }
+    };
+`;
+export const ForecastWeatherItemIconBox = styled.div`
+    & > svg {
+        font-size:2rem;
+    }
+`;
+export const ForecastWeatherAddInfoItemTitle = styled.span`
+    font-size:1.3rem;
+    font-weight:400;
+    margin-bottom:5px; 
+`;
+export const ForecastWeatherAddInfoItemDescription = styled.span`
+    font-size:1.3rem;
 `;

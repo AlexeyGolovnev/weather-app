@@ -1,5 +1,5 @@
 import React from 'react'
-import CurrentWeatherItem from './../CurrentWeather/CurrentWeatherItem'
+import ForecastWeatherAddInfoItem from './ForecastWeatherAddInfoItem';
 import {
     ForecastWeatherDayItemContainer,
     ForecastWeatherDayItemDate,
@@ -10,23 +10,28 @@ import {
     ForecastWeatherDayItemMainInfoDesc,
     ForecastWeatherDayItemAddInfoBox
 } from './ForecastWeather.elements';
-import { FiWind, FiCloud, FiSunrise, FiSunset, FiEye } from 'react-icons/fi'
-import { WiHumidity} from 'react-icons/wi';
-import { RiRainyLine, RiEyeLine } from 'react-icons/ri'; 
+import { 
+    WiSunrise, 
+    WiSunset,
+    WiHumidity,
+    WiStrongWind,
+    WiSprinkle,
+} from 'react-icons/wi';
+import { RiEyeLine } from 'react-icons/ri';
 
 export default function ForecastWeatherDayItem({date, astro, day}) {
     let additionalData = null;
     if(astro && day) {
         additionalData = [
-            [<FiWind />, 'Wind', day.maxwind_kph + ' kph'],
+            [<WiStrongWind />, 'Wind', day.maxwind_kph + ' kph'],
             [<RiEyeLine />,'Visibility',day.avgvis_km + ' km'],
             [<WiHumidity />,'Humidity', day.avghumidity + ' %'],        
-            [<RiRainyLine />,'Precipitation',day.totalprecip_mm + ' mm'],
-            [<FiSunrise />, 'Sunrise', astro.sunrise],
-            [<FiSunset />, 'Sunset', astro.sunset],
+            [<WiSprinkle />,'Precipitation',day.totalprecip_mm + ' mm'],
+            [<WiSunrise />, 'Sunrise', astro.sunrise],
+            [<WiSunset />, 'Sunset', astro.sunset],
         ].map((item, index) => {
             return (
-                <CurrentWeatherItem 
+                <ForecastWeatherAddInfoItem 
                     key = {index}
                     icon = {item[0]}
                     title = {item[1]}

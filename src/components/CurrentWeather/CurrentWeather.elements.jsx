@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const CurrentWeatherContainer = styled.div`
     display:flex; 
     width:100%;
@@ -26,9 +27,15 @@ export const CurrentWeatherMainData = styled.div`
 
 `
 export const CurrentWeatherTemperatureBox = styled.div`
+    font-size:4rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    & > svg {
+        stroke:#ffffff;
+    }
 `
 export const CurrentWeatherTemperature = styled.span`
-    font-size: 3rem;
     font-weight:400;
 `
 export const CurrentWeatherIconBox = styled.div`
@@ -39,21 +46,20 @@ export const CurrentWeatherIconBox = styled.div`
     align-items:center;
 `
 export const CurrentWeatherIcon = styled.img`
-    max-width:100%;
-    
+    width:80px;
+        
 `
 export const CurrentWeatherDescription = styled.div`
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight:400;
 `
 export const CurrentWeatherAdditionalData = styled.div`
     display:grid;
-    max-width:1200px;
-    grid-template-columns: repeat(auto-fit, minmax(80px,148px));
+    max-width:950px;
+    grid-template-columns: repeat(auto-fit, minmax(0,148px));
     grid-gap:10px;
     justify-content: center;
     align-items:center;
-    max-width: 1300px;
     text-align:center;
     padding:10px 0;
     background: rgba(201,185,221,0.4);
@@ -64,27 +70,36 @@ export const CurrentWeatherItemContainer = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex: 1 1 15%;
-
-    &:nth-child(1) {
+    &:nth-child(1),&:nth-child(3) {
         svg {
-             stroke:#14b4c6; 
+             fill:#14b4c6; 
         }
-    }
-    &:nth-child(2),&:nth-child(3),&:nth-child(4) {
+    };
+    &:nth-child(2), &:nth-child(4), &:nth-child(5) {
         svg {
             fill:#1eb4ed;
         }
     };
-    &:nth-child(5), &:nth-child(6) {
+    &:nth-child(6), &:nth-child(7){
         svg {
-            stroke: #ffff00;
+            fill: #ffff00;
         }
-    }
+    };
+    &:nth-child(8), &:nth-child(9), &:nth-child(10){
+        svg {
+            fill: #3a55ce;
+        }
+    };
+    &:nth-child(11), &:nth-child(12){
+        svg {
+            fill: #e65858;
+        }
+    };
+
 `;
 export const CurrentWeatherItemIconBox = styled.div`
     & > svg {
-        font-size:2.5rem;
+        font-size:4rem;
     }
 `;
 export const CurrentWeatherItemTitle = styled.span`

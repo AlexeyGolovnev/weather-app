@@ -10,22 +10,38 @@ import {
     CurrentWeatherAdditionalData
 } from './CurrentWeather.elements';
 import CurrentWeatherItem from './CurrentWeatherItem';
-import { FiWind, FiCloud, FiSunrise, FiSunset } from 'react-icons/fi'
-import { WiHumidity} from 'react-icons/wi';
-import { RiRainyLine } from 'react-icons/ri'; 
+import { 
+    WiSunrise, 
+    WiSunset,
+    WiHumidity,
+    WiMoonrise, 
+    WiMoonset,
+    WiCloudyGusts,
+    WiCloud,
+    WiStrongWind,
+    WiSprinkle,
+    WiSolarEclipse,
+    WiMoonWaxingCrescent4,
+    WiBarometer
+} from 'react-icons/wi';
 
-
-export default function CurrentWeather({ temp_c, condition, wind_kph, humidity, astro, cloud, precip_mm }) {
+export default function CurrentWeather({ temp_c, condition, wind_kph, humidity, astro, cloud, precip_mm, gust_kph, uv, pressure_mb }) {
     const deg = '\u00b0';
     let additionalData = '';
     if(astro) {
          additionalData = [
-            [<FiWind />, 'Wind', wind_kph + ' kph'],
-            [<FiCloud />,'Cloud',cloud + ' %'],
+            [<WiStrongWind />, 'Wind', wind_kph + ' kph'],
+            [<WiCloud />,'Cloud', cloud + ' %'],
+            [<WiCloudyGusts />, 'Gusts', gust_kph +' kph'],
             [<WiHumidity />,'Humidity', humidity + ' %'],        
-            [<RiRainyLine />,'Precipitation',precip_mm + ' mm'],
-            [<FiSunrise />, 'Sunrise', astro.sunrise],
-            [<FiSunset />, 'Sunset', astro.sunset],
+            [<WiSprinkle />,'Precipitation',precip_mm + ' mm'],
+            [<WiSunrise />, 'Sunrise', astro.sunrise],
+            [<WiSunset />, 'Sunset', astro.sunset],
+            [<WiMoonrise />, 'Moonrise', astro.moonrise],
+            [<WiMoonset />, 'Moonset', astro.moonset],
+            [<WiMoonWaxingCrescent4 />, 'Moon phase', astro.moon_phase],
+            [<WiSolarEclipse />, 'UV', uv],
+            [<WiBarometer />, 'Pressure ', pressure_mb + ' mb'],
         ].map((item, index) => {
             return (
                 <CurrentWeatherItem 
