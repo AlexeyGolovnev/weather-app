@@ -110,6 +110,7 @@ export const ForecastWeatherDayItemMainInfoBox = styled.div`
     height:100%;
     border-right:1px solid #fff;
     padding: 10px;
+    min-width:200px;
     text-align:center;
     @media screen and (max-width:767px) {
         border-right: none;
@@ -132,7 +133,7 @@ export const ForecastWeatherDayItemAddInfoBox = styled.div`
     display:grid;
     grid-template-columns:repeat(3, minmax(0,150px));
     grid-gap:10px;
-    padding: 10px 0;
+    padding: 10px 5px;
 `;
 
 export const ForecastWeatherAddInfoItemContainer = styled.div`

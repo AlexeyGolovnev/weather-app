@@ -1,7 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { DispatchContext } from '../../dispatchContext';
+import React, { useEffect, useState, useRef } from 'react'
 import { Container } from '../../globalStyles'
-import { getCurrentWeather, getAstronomyWeather, getForecastWeather } from '../../redux/actions';
 import { 
     SearchFieldContainer, 
     SearchFieldInput, 
@@ -10,29 +8,33 @@ import {
     SearchButton,
     SearchFieldSection
 } from './SearchField.elements';
+import SearchFieldAutoComplete from './SearchFieldAutoComplete';
 
-export default function SearchField() {
-    const { dispatch } = useContext(DispatchContext);
-    const [city, setCity] = useState('');
+export default function SearchField({ getWeather, city, setCity, isAutoCompleteOpen, setIsAutoCompleteOpen, filteredCitiesList }) {
     const [enterClicked, setEnterClicked] = useState(false);
     const [buttonClick, setButtonClick] = useState(false); 
+    const inputRef = useRef();
     const handleKeyDown = (e) => {
-        if(e.keyCode === 13 ) {
+        if(e.keyCode === 13) {
             setEnterClicked(true);
         }
     }
     const handleInput = (e) => {
         setCity(e.target.value)
     }
-
+    const focusInput = () => {
+        city.length > 2 && setIsAutoCompleteOpen(true);
+    }
+    const onBlurClose = (e) => {
+        setIsAutoCompleteOpen(false);
+    }
     useEffect(() => {
-        if((enterClicked || buttonClick) && city.length) {
-            dispatch(getCurrentWeather(city))
-            dispatch(getAstronomyWeather(city));
-            dispatch(getForecastWeather(city));
+        if((buttonClick || enterClicked) && city.length) {
+            getWeather(city);
+            setButtonClick(false);
             setEnterClicked(false);
         }
-    }, [enterClicked, buttonClick]);
+    },[buttonClick, enterClicked])
 
     return (
         <SearchFieldSection>
@@ -40,20 +42,31 @@ export default function SearchField() {
                 <SearchFieldContainer>
                     <SearchFieldInputBox>
                         <SearchFieldInput 
+                            ref = {inputRef}
                             name = "cityName"
-                            onChange = {handleInput}
-                            onKeyDown = {handleKeyDown}
                             type = 'text'
                             placeholder = 'Search City...'
-                            autocomplete='on'
-                            />
-                        <SearchButton onClick = {() => setButtonClick(true)}>
+                            value = {city}
+                            autoComplete = 'off'
+                            onChange = {handleInput}
+                            onKeyDown = {handleKeyDown}
+                            onFocus = {focusInput}
+                            onBlur = {onBlurClose}
+                        />
+                        <SearchButton onClick={() => setButtonClick(true)}>
                             <SearchFieldIcon/>
                         </SearchButton>
+                        <SearchFieldAutoComplete 
+                            inputRef = {inputRef}  
+                            setCity = {setCity} 
+                            data = {filteredCitiesList} 
+                            isAutoCompleteOpen = {isAutoCompleteOpen}
+                            setIsAutoCompleteOpen = {setIsAutoCompleteOpen}
+                        />
                     </SearchFieldInputBox>
                 </SearchFieldContainer>
             </Container>
         </SearchFieldSection>
 
-    )
+    );
 }

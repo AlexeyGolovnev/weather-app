@@ -17,3 +17,7 @@ export function getForecastWeatherFromApi(city) {
 export function getAstronomyWeatherFromApi(city) {
     return instance.get(`astronomy.json?key=${API_KEY}&q=${city}&dt=${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`);
 }
+
+export function getCitiesListFromApi(value) {
+    return instance.get(`search.json?key=${API_KEY}&q=${value}`);
+}

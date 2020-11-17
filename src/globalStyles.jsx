@@ -29,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
     *{
         box-sizing:border-box;
     }
+    ul {
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
 `;
 export const AppContainer = styled(animated.div)`
   width:100%;

@@ -19,7 +19,6 @@ export const SearchFieldInputBox = styled.div`
     width:700px;
     min-width:300px;
 `
-
 export const SearchFieldInput = styled.input`   
     display:flex;
     min-width:100%;
@@ -39,12 +38,9 @@ export const SearchFieldInput = styled.input`
         color: #8a8a8a;
     }
 `;
-
 export const SearchFieldIcon = styled(FiSearch)`
     stroke:#000;
     font-size:1.2rem;
-
-
 `
 export const SearchButton = styled.button`
     position:absolute;
@@ -63,3 +59,28 @@ export const SearchButton = styled.button`
         background-color:#ffffff;
     }
 `
+export const SearchFieldAutoCompleteContainer = styled.div`
+    position:absolute;
+    display:${({ isAutoCompleteOpen }) => isAutoCompleteOpen ? 'flex' : 'none'};
+    top:102%;
+    width:95%;
+    max-height:160px;
+    overflow:auto;
+    border-radius:5px;
+    background:#fff;
+`;
+export const SearchFieldAutoCompleteList = styled.ul`
+    width:100%;
+`; 
+export const SearchFieldAutoCompleteListItem = styled.li`
+    display:block;
+    width:100%;
+    padding:10px;
+    color:#000;
+    font-weight:400;
+    border-bottom:1px solid #ccc;
+    cursor:pointer;
+    &:hover{
+        background-color:#dadada;
+    }
+`;
