@@ -46,7 +46,6 @@ function Main({
     useEffect(() => {
         setStartedAnimate(true);
     },[currentTab])
-    
     const tabs = ['Current','Forecast'].map((item, index) => {
         return (
             <MainTab 
@@ -57,6 +56,7 @@ function Main({
                 isCurrentTab = {currentTab === index}
             />
         )})
+        
         return (
             <MainSection>
                 <Container>

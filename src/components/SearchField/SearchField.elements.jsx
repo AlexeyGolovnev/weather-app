@@ -3,13 +3,13 @@ import { FiSearch } from 'react-icons/fi'
 
 export const SearchFieldSection = styled.section`
 `;
-
 export const SearchFieldContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
     padding:2rem 0;
     width:100%;
+    z-index:1000;
 `
 export const SearchFieldInputBox = styled.div`
     position:relative;
@@ -61,12 +61,11 @@ export const SearchButton = styled.button`
 `
 export const SearchFieldAutoCompleteContainer = styled.div`
     position:absolute;
-    display:${({ isAutoCompleteOpen }) => isAutoCompleteOpen ? 'flex' : 'none'};
+    display:flex;
     top:102%;
     width:95%;
     max-height:160px;
     overflow:auto;
-    border-radius:5px;
     background:#fff;
 `;
 export const SearchFieldAutoCompleteList = styled.ul`

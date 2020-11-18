@@ -19,7 +19,7 @@ import {
 } from 'react-icons/wi';
 import { RiEyeLine } from 'react-icons/ri';
 
-export default function ForecastWeatherDayItem({date, astro, day}) {
+export default function ForecastWeatherDayItem({ date, astro, day }) {
     let additionalData = null;
     if(astro && day) {
         additionalData = [
@@ -40,14 +40,13 @@ export default function ForecastWeatherDayItem({date, astro, day}) {
             )
         })
     }
-    
     return (
         <ForecastWeatherDayItemContainer>
             <ForecastWeatherDayItemDate>{date}</ForecastWeatherDayItemDate>
             <ForecastWeatherDayItemInfoBox>
                 <ForecastWeatherDayItemMainInfoBox>
                     <ForecastWeatherDayItemMainInfoTemp>{day.avgtemp_c}&deg;</ForecastWeatherDayItemMainInfoTemp>
-                    <ForecastWeatherDayItemMainInfoIcon src={day.condition.icon} />
+                    <ForecastWeatherDayItemMainInfoIcon src = {day.condition.icon} />
                     <ForecastWeatherDayItemMainInfoDesc>{day.condition.text}</ForecastWeatherDayItemMainInfoDesc>
                 </ForecastWeatherDayItemMainInfoBox>
                 <ForecastWeatherDayItemAddInfoBox>

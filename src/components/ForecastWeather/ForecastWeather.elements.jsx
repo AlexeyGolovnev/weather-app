@@ -7,28 +7,24 @@ export const ForecastWeatherContainer = styled.div`
     overflow:hidden;
     flex-direction:column;
 `;
-
 export const ForecastWeatherItemsContainer = styled.div`
     display:flex;
     width:100%;
     top:0;
     left:0;
 `
-
 export const ForecastWeatherCarouselBox =styled.div`
     margin-bottom:1rem;
-    @media screen and (max-width:767px) {
+    @media screen and (max-width:768px) {
         display:flex;
         justify-content:center;
         align-items:center;
         width:100%;
     }
 `
-
 export const ForecastWeatherSubtitleBox = styled.div`
     margin-bottom:0.9rem;
 `
-
 export const ForecastWeatherItemContainer = styled.div`
     display:flex;
     flex-direction:column;
@@ -39,12 +35,10 @@ export const ForecastWeatherItemContainer = styled.div`
     user-select:none;
     text-align:center;
 `;
-
 export const ForecastWeatherItemTime = styled.span`
     font-size:1.5rem;
     border-bottom:1px solid #fff;
     margin-bottom:0.7rem;
-
 `
 export const ForecastWeatherItemIcon = styled.img`
 `
@@ -56,34 +50,31 @@ export const ForecastWeatherItemDescription = styled.span`
     font-size:1.2rem;
     font-weight:400;
 `
-
 export const ForecastWeatherTwoDaysBox = styled.div`
     display:flex;
     justify-content:flex-start;
     flex-wrap:wrap;
     min-width:100%;
 `;
-
 export const ForecastWeatherDayItemContainer = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     align-items:center;
+    width:600px;
     background-color:rgba(201,185,221,0.4);
     border-radius:10px;
     margin-bottom:10px;
     &:not(:last-child) {
         margin-right:10px;
     }
-    width:600px;
-    @media screen and (max-width:767px) {
+    @media screen and (max-width:768px) {
         width:100%;
         &:not(:last-child) {
             margin-right:0;
         }
         justify-content:center;
     }
-  
 `;
 export const ForecastWeatherDayItemDate = styled.span`
     width:100%;
@@ -98,7 +89,7 @@ export const ForecastWeatherDayItemInfoBox = styled.div`
     justify-content:space-between;
     align-items:center;
     padding: 0 0;
-    @media screen and (max-width:767px) {
+    @media screen and (max-width:768px) {
         flex-direction:column;
     }
 `;
@@ -135,7 +126,6 @@ export const ForecastWeatherDayItemAddInfoBox = styled.div`
     grid-gap:10px;
     padding: 10px 5px;
 `;
-
 export const ForecastWeatherAddInfoItemContainer = styled.div`
     display:flex;
     justify-content:center;
@@ -159,10 +149,10 @@ export const ForecastWeatherItemIconBox = styled.div`
     }
 `;
 export const ForecastWeatherAddInfoItemTitle = styled.span`
-    font-size:1.3rem;
+    font-size:1.2rem;
     font-weight:400;
     margin-bottom:5px; 
 `;
 export const ForecastWeatherAddInfoItemDescription = styled.span`
-    font-size:1.3rem;
+    font-size:1.2rem;
 `;

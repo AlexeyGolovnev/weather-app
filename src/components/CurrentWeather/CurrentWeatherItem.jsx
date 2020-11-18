@@ -6,7 +6,7 @@ import {
     CurrentWeatherItemDescription 
 } from './CurrentWeather.elements';
 
-export default function CurrentWeatherItem({icon, title, description}) {
+export default function CurrentWeatherItem({ icon, title, description }) {
     return (
         <CurrentWeatherItemContainer>
             <CurrentWeatherItemIconBox>{icon}</CurrentWeatherItemIconBox>

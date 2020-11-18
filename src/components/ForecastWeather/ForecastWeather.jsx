@@ -7,8 +7,7 @@ import {
     ForecastWeatherSubtitleBox,
     ForecastWeatherCarouselBox,
     ForecastWeatherTwoDaysBox
-}
-from './ForecastWeather.elements'
+} from './ForecastWeather.elements'
 import { SubTitle } from '../../globalStyles';
 
 export default function ForecastWeather({ forecastDays }) {
@@ -35,6 +34,7 @@ export default function ForecastWeather({ forecastDays }) {
             />
         )
     })
+    
     return (
         <ForecastWeatherContainer>
             <ForecastWeatherSubtitleBox>

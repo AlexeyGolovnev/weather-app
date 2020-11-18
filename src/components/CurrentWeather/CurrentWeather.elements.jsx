@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const CurrentWeatherContainer = styled.div`
     display:flex; 
     width:100%;
@@ -59,7 +58,7 @@ export const CurrentWeatherAdditionalData = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(0,148px));
     grid-gap:10px;
     justify-content: center;
-    align-items:center;
+    align-items:flex-start;
     text-align:center;
     padding:10px 0;
     background: rgba(201,185,221,0.4);
@@ -95,7 +94,6 @@ export const CurrentWeatherItemContainer = styled.div`
             fill: #e65858;
         }
     };
-
 `;
 export const CurrentWeatherItemIconBox = styled.div`
     & > svg {
@@ -106,7 +104,6 @@ export const CurrentWeatherItemTitle = styled.span`
     font-size: 1.5rem;
     font-weight:400;
     margin-bottom:5px;
-    
 `;
 export const CurrentWeatherItemDescription = styled.span`
     font-size: 1.5rem;

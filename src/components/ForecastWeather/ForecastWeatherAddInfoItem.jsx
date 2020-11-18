@@ -6,7 +6,7 @@ import {
     ForecastWeatherAddInfoItemDescription,
 } from './ForecastWeather.elements';
 
-export default function ForecastWeatherAddInfoItem({icon, title, description}) {
+export default function ForecastWeatherAddInfoItem({ icon, title, description }) {
     return (
         <ForecastWeatherAddInfoItemContainer>
             <ForecastWeatherItemIconBox>{icon}</ForecastWeatherItemIconBox>

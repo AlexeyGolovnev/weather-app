@@ -6,7 +6,7 @@ import {
     SearchFieldIcon, 
     SearchFieldInputBox,
     SearchButton,
-    SearchFieldSection
+    SearchFieldSection,
 } from './SearchField.elements';
 import SearchFieldAutoComplete from './SearchFieldAutoComplete';
 
@@ -14,6 +14,8 @@ export default function SearchField({ getWeather, city, setCity, isAutoCompleteO
     const [enterClicked, setEnterClicked] = useState(false);
     const [buttonClick, setButtonClick] = useState(false); 
     const inputRef = useRef();
+    const autoCompleteRef = useRef();
+
     const handleKeyDown = (e) => {
         if(e.keyCode === 13) {
             setEnterClicked(true);
@@ -22,19 +24,30 @@ export default function SearchField({ getWeather, city, setCity, isAutoCompleteO
     const handleInput = (e) => {
         setCity(e.target.value)
     }
-    const focusInput = () => {
+    const autoCompleteOpen = () => {
         city.length > 2 && setIsAutoCompleteOpen(true);
+    } 
+    const handleClickOutside = (e) => {
+        const {current: wrap} = autoCompleteRef;
+        if(e.target === inputRef.current) {
+            autoCompleteOpen();
+        } else if(wrap && !wrap.contains(e.target)) {
+            setIsAutoCompleteOpen(false);
+        }
     }
-    const onBlurClose = (e) => {
-        setIsAutoCompleteOpen(false);
-    }
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     useEffect(() => {
         if((buttonClick || enterClicked) && city.length) {
             getWeather(city);
             setButtonClick(false);
             setEnterClicked(false);
+            setIsAutoCompleteOpen(false);
         }
-    },[buttonClick, enterClicked])
+    },[buttonClick, enterClicked]);
 
     return (
         <SearchFieldSection>
@@ -50,19 +63,20 @@ export default function SearchField({ getWeather, city, setCity, isAutoCompleteO
                             autoComplete = 'off'
                             onChange = {handleInput}
                             onKeyDown = {handleKeyDown}
-                            onFocus = {focusInput}
-                            onBlur = {onBlurClose}
+                            onClick = {autoCompleteOpen}
                         />
                         <SearchButton onClick={() => setButtonClick(true)}>
                             <SearchFieldIcon/>
                         </SearchButton>
-                        <SearchFieldAutoComplete 
-                            inputRef = {inputRef}  
-                            setCity = {setCity} 
-                            data = {filteredCitiesList} 
-                            isAutoCompleteOpen = {isAutoCompleteOpen}
-                            setIsAutoCompleteOpen = {setIsAutoCompleteOpen}
-                        />
+                        {isAutoCompleteOpen &&
+                            <SearchFieldAutoComplete 
+                                inputRef = {inputRef}  
+                                autoCompleteRef = {autoCompleteRef}
+                                setCity = {setCity} 
+                                data = {filteredCitiesList} 
+                                getWeather = {getWeather}
+                            />
+                        }
                     </SearchFieldInputBox>
                 </SearchFieldContainer>
             </Container>

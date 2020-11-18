@@ -9,7 +9,6 @@ export const CarouselContainer = styled.div`
     overflow:hidden;
     border-radius:10px;
 `;
-
 const CarouselButtonStyle = css`
     position:absolute;
     display:flex;
@@ -36,7 +35,6 @@ export const CarouselButtonNext = styled(MdNavigateNext)`
     ${CarouselButtonStyle};
     right:0;
 `;
-
 export const CarouselFrame = styled.div`
 
 `

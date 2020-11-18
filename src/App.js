@@ -17,14 +17,22 @@ function App() {
     const [forecastWeather, setForecastWeather] = useState({});
     const [astronomyWeather, setAstronomyWeather] = useState({});
     const [citiesList, setCitiesList] = useState([]);
+    const [filteredCitiesList, setFilteredCitiesList] = useState([]);
+    const [city, setCity] = useState('');
     const [isFetching, setIsFetching] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [hasData, setHasData] = useState(false);
-    const [city, setCity] = useState('');
-    const [currentTab, setCurrentTab] = useState(0);
-    const [filteredCitiesList, setFilteredCitiesList] = useState([]);
     const [isAutoCompleteOpen, setIsAutoCompleteOpen] = useState(false);
-
+    const [currentTab, setCurrentTab] = useState(0);
+    const animateSetting = useSpring({
+        reset:false,
+        opacity: 1,
+        from: { opacity: 0 },
+        config: {
+            duration: 1000,
+        }
+      })
+    
     const getWeather = (city) => {
         setHasError(false);
         setIsFetching(true);
@@ -43,7 +51,7 @@ function App() {
     }
     const getCitiesList = async (value) => {
         if(city.length>2) {
-            const response = await getCitiesListFromApi(city);
+            const response = await getCitiesListFromApi(value);
             setCitiesList(response.data);
             setIsAutoCompleteOpen(true);
         } else {
@@ -51,21 +59,12 @@ function App() {
             setIsAutoCompleteOpen(false);
         }
     }
-    const animateSetting = useSpring({
-        reset:false,
-        opacity: 1,
-        from: { opacity: 0 },
-        config: {
-            duration: 1000,
-        }
-      })
-    
     useEffect(() => {
         getCitiesList(city);
     },[city]);
 
     useEffect(() => {
-        citiesList.length && setFilteredCitiesList(citiesList.map(item => item.name.split(',')[0]));
+        citiesList.length && setFilteredCitiesList(citiesList.map(item => item.name));
     }, [citiesList]);
     
     return ( 
@@ -82,21 +81,23 @@ function App() {
                     setIsAutoCompleteOpen = {setIsAutoCompleteOpen}
                 />
                 {!isFetching 
-                ? hasData && !hasError && <Main 
-                    currentWeather = {currentWeather.data} 
-                    forecastWeather = {forecastWeather.data.forecast} 
-                    astronomyWeather = {astronomyWeather.data} 
-                    currentTab = {currentTab}
-                    setCurrentTab = {setCurrentTab}
-                /> 
-                :<LoaderBox>
-                    <Loader 
-                        type="Puff"
-                        color="#fff"
-                        height={80}
-                        width={80} 
-                    />
-                </LoaderBox>
+                    ? hasData && !hasError && 
+                    <Main 
+                        currentWeather = {currentWeather.data} 
+                        forecastWeather = {forecastWeather.data.forecast} 
+                        astronomyWeather = {astronomyWeather.data} 
+                        currentTab = {currentTab}
+                        setCurrentTab = {setCurrentTab}
+                    /> 
+                    : 
+                    <LoaderBox>
+                        <Loader 
+                            type="Puff"
+                            color="#fff"
+                            height={80}
+                            width={80} 
+                        />
+                    </LoaderBox>
             }
             </AppContainer>
         </IconContext.Provider>

@@ -5,8 +5,7 @@ import {
     ForecastWeatherItemIcon,
     ForecastWeatherItemTemperature,
     ForecastWeatherItemDescription
-}
-from './ForecastWeather.elements'
+} from './ForecastWeather.elements'
 
 export default function ForecastWeatherItem({time, icon, temperature, description}) {
     return (
@@ -15,7 +14,6 @@ export default function ForecastWeatherItem({time, icon, temperature, descriptio
             <ForecastWeatherItemTemperature>{temperature}&deg;</ForecastWeatherItemTemperature>
             <ForecastWeatherItemIcon src = {icon} />
             <ForecastWeatherItemDescription>{description}</ForecastWeatherItemDescription>
-
         </ForecastWeatherItemContainer>
     )
 }

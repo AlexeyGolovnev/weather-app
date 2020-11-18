@@ -1,4 +1,5 @@
 import React from 'react'
+import CurrentWeatherItem from './CurrentWeatherItem';
 import {
     CurrentWeatherContainer,
     CurrentWeatherTemperatureBox,
@@ -9,7 +10,6 @@ import {
     CurrentWeatherMainData,
     CurrentWeatherAdditionalData
 } from './CurrentWeather.elements';
-import CurrentWeatherItem from './CurrentWeatherItem';
 import { 
     WiSunrise, 
     WiSunset,
@@ -29,12 +29,12 @@ export default function CurrentWeather({ temp_c, condition, wind_kph, humidity, 
     const deg = '\u00b0';
     let additionalData = '';
     if(astro) {
-         additionalData = [
+        additionalData = [
             [<WiStrongWind />, 'Wind', wind_kph + ' kph'],
-            [<WiCloud />,'Cloud', cloud + ' %'],
+            [<WiCloud />, 'Cloud', cloud + ' %'],
             [<WiCloudyGusts />, 'Gusts', gust_kph +' kph'],
-            [<WiHumidity />,'Humidity', humidity + ' %'],        
-            [<WiSprinkle />,'Precipitation',precip_mm + ' mm'],
+            [<WiHumidity />, 'Humidity', humidity + ' %'],        
+            [<WiSprinkle />, 'Precipitation', precip_mm + ' mm'],
             [<WiSunrise />, 'Sunrise', astro.sunrise],
             [<WiSunset />, 'Sunset', astro.sunset],
             [<WiMoonrise />, 'Moonrise', astro.moonrise],

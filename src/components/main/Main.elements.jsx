@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { animated } from 'react-spring'
 
 export const MainSection = styled.main`
-
 `
 export const MainContainer = styled(animated.div)`
     display:flex;
@@ -26,15 +25,12 @@ export const MainBodyHeader = styled.div`
     width:100%;
     margin-bottom:20px;
 `;
-
-
 export const MainTabContainer = styled.div(({ isActive }) => ({
     borderBottom: isActive ? '2px solid #ffffff' : 'none',
 }),`
     margin-right: 25px;
     cursor:pointer;
 `);
-
 export const MainTabTitle = styled.span`
     font-size:1.8rem;
 `
