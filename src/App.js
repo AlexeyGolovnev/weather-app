@@ -9,7 +9,8 @@ import {
     getCurrentWeatherFromApi, 
     getForecastWeatherFromApi, 
     getAstronomyWeatherFromApi, 
-    getCitiesListFromApi 
+    getCitiesListFromApi,
+    getLocalIpAddress
 } from './api/api';
 
 function App() {
@@ -59,6 +60,10 @@ function App() {
             setIsAutoCompleteOpen(false);
         }
     }
+
+    useEffect(() => {
+        getLocalIpAddress().then((response) => getWeather(response.data.ip_address));
+    },[])
     useEffect(() => {
         getCitiesList(city);
     },[city]);

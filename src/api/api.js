@@ -17,3 +17,7 @@ export function getAstronomyWeatherFromApi(city) {
 export function getCitiesListFromApi(value) {
     return instance.get(`search.json?key=${API_KEY}&q=${value}`);
 }
+
+export function getLocalIpAddress() {
+    return axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=12d30c50adfa4f189a1c264e666be5b6'); 
+}
