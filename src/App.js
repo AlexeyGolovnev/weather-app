@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import GlobalStyle from './globalStyles';
 import Loader from 'react-loader-spinner';
 import { useSpring } from 'react-spring';
-import { Header, SearchField, Main } from './components';
+import { Header, SearchField, Main, Preloader } from './components';
 import { IconContext } from 'react-icons/lib';
 import { AppContainer, LoaderBox } from './globalStyles';
 import { 
@@ -12,8 +12,10 @@ import {
     getCitiesListFromApi,
     getLocalIpAddress
 } from './api/api';
+import { useEventListener } from './customsHooks/useEventListener';
 
-function App() {
+function App({ finish }) {
+    const [isLoadFinish, setIsLoadFinish] = useState(false);
     const [currentWeather, setCurrentWeather] = useState({});
     const [forecastWeather, setForecastWeather] = useState({});
     const [astronomyWeather, setAstronomyWeather] = useState({});
@@ -61,6 +63,12 @@ function App() {
         }
     }
 
+    const onLoadFinish = () => {
+        setIsLoadFinish(true);
+    }
+
+    useEventListener('load', onLoadFinish);
+
     useEffect(() => {
         getLocalIpAddress().then((response) => getWeather(response.data.ip_address));
     },[])
@@ -71,9 +79,10 @@ function App() {
     useEffect(() => {
         citiesList.length && setFilteredCitiesList(citiesList.map(item => item.name));
     }, [citiesList]);
-    
+
     return ( 
         <IconContext.Provider value = {{ color:'#fff' }}>
+            <Preloader finish = {isLoadFinish}/>
             <GlobalStyle />
             <AppContainer style = {animateSetting}>
                 <Header />
@@ -105,7 +114,7 @@ function App() {
                     </LoaderBox>
             }
             </AppContainer>
-        </IconContext.Provider>
+        </IconContext.Provider> 
     );
 }
 export default App;

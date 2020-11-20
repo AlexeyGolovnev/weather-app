@@ -35,10 +35,11 @@ const GlobalStyle = createGlobalStyle`
       padding:0;
     }
 `;
+
 export const AppContainer = styled(animated.div)`
   width:100%;
   height:100%;
-`
+`;
 export const Container = styled.div`
   max-width: 1600px;
   min-width: 100%;
