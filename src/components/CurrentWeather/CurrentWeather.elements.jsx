@@ -17,7 +17,8 @@ export const CurrentWeatherMainData = styled.div`
     text-align:center;
     padding:10px;
     margin-right:1.1rem;
-    background: rgba(201,185,221,0.4);
+    /* background: rgba(201,185,221,0.4); */
+    background: rgba(50,50,50,0.5);
     border-radius:10px;
     @media screen and (max-width:767px) {
         margin-right:0;
@@ -61,7 +62,8 @@ export const CurrentWeatherAdditionalData = styled.div`
     align-items:flex-start;
     text-align:center;
     padding:10px 0;
-    background: rgba(201,185,221,0.4);
+    /* background: rgba(201,185,221,0.4); */
+    background: rgba(50,50,50,0.5);
     border-radius:10px;
 `
 export const CurrentWeatherItemContainer = styled.div`

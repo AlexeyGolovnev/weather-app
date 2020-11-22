@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import GlobalStyle from './globalStyles';
 import Loader from 'react-loader-spinner';
 import { useSpring } from 'react-spring';
@@ -70,7 +70,11 @@ function App({ finish }) {
     useEventListener('load', onLoadFinish);
 
     useEffect(() => {
-        getLocalIpAddress().then((response) => getWeather(response.data.ip_address));
+        navigator.geolocation.getCurrentPosition(
+            (response) =>  getWeather(response.coords.latitude + ',' + response.coords.longitude),
+            () => getLocalIpAddress().then((response) => getWeather(response.data.ip_address)),
+            {timeout:1000}
+        );
     },[])
     useEffect(() => {
         getCitiesList(city);
@@ -84,7 +88,7 @@ function App({ finish }) {
         <IconContext.Provider value = {{ color:'#fff' }}>
             <Preloader finish = {isLoadFinish}/>
             <GlobalStyle />
-            <AppContainer style = {animateSetting}>
+            <AppContainer isday = {currentWeather.data?.current.is_day} style = {animateSetting} >
                 <Header />
                 <SearchField 
                     getWeather = {getWeather} 

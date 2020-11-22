@@ -62,7 +62,8 @@ export const ForecastWeatherDayItemContainer = styled.div`
     justify-content:flex-start;
     align-items:center;
     width:600px;
-    background-color:rgba(201,185,221,0.4);
+    //background-color:rgba(201,185,221,0.4);
+    background-color: rgba(50,50,50,0.5);
     border-radius:10px;
     margin-bottom:10px;
     &:not(:last-child) {

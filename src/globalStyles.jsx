@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { animated } from 'react-spring';
-import bg from "./assets/background.jpg";
+import bgDay from "./assets/day.jpg";
+import bgNight from "./assets/night.jpg";
 
 const GlobalStyle = createGlobalStyle`
     html, body {
-      width:100%;
-      height:100%;
+      min-width:100%;
+      min-height:100%;
       margin:0;
       padding:0;
       font-size:16px;
       font-weight:100;
       font-family:'Roboto', sans-serif;
       color:#ffffff;
-      background:url(${bg}) no-repeat center / cover; 
       background-attachment: fixed;
       @media screen and (max-width:1368px) {
           font-size:13px;
@@ -38,7 +38,9 @@ const GlobalStyle = createGlobalStyle`
 
 export const AppContainer = styled(animated.div)`
   width:100%;
-  height:100%;
+  min-height:100vh;
+  transition: background 1s linear;
+  background:url(${({ isday }) => isday ? bgDay : bgNight}) no-repeat center / cover; 
 `;
 export const Container = styled.div`
   max-width: 1600px;

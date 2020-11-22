@@ -5,7 +5,8 @@ export const CarouselContainer = styled.div`
     position:relative;
     display:flex;
     width:${({ showFramesCount }) => showFramesCount * 150 + 'px'};
-    background: rgba(201,185,221,0.4);
+    //background: rgba(201,185,221,0.4);
+    background-color: rgba(50,50,50,0.5);
     overflow:hidden;
     border-radius:10px;
 `;

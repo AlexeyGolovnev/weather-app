@@ -30,9 +30,9 @@ export default function CurrentWeather({ temp_c, condition, wind_kph, humidity, 
     let additionalData = '';
     if(astro) {
         additionalData = [
-            [<WiStrongWind />, 'Wind', wind_kph + ' kph'],
+            [<WiStrongWind />, 'Wind', wind_kph + ' kp/h'],
             [<WiCloud />, 'Cloud', cloud + ' %'],
-            [<WiCloudyGusts />, 'Gusts', gust_kph +' kph'],
+            [<WiCloudyGusts />, 'Gusts', gust_kph +' kp/h'],
             [<WiHumidity />, 'Humidity', humidity + ' %'],        
             [<WiSprinkle />, 'Precipitation', precip_mm + ' mm'],
             [<WiSunrise />, 'Sunrise', astro.sunrise],

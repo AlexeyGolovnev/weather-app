@@ -23,7 +23,7 @@ export default function ForecastWeatherDayItem({ date, astro, day }) {
     let additionalData = null;
     if(astro && day) {
         additionalData = [
-            [<WiStrongWind />, 'Wind', day.maxwind_kph + ' kph'],
+            [<WiStrongWind />, 'Wind', day.maxwind_kph + ' kp/h'],
             [<RiEyeLine />,'Visibility',day.avgvis_km + ' km'],
             [<WiHumidity />,'Humidity', day.avghumidity + ' %'],        
             [<WiSprinkle />,'Precipitation',day.totalprecip_mm + ' mm'],

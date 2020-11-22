@@ -26,7 +26,7 @@ export const MainBodyHeader = styled.div`
     margin-bottom:20px;
 `;
 export const MainTabContainer = styled.div(({ isActive }) => ({
-    borderBottom: isActive ? '2px solid #ffffff' : 'none',
+    borderBottom: isActive ? '2px solid #fff' : 'none',
 }),`
     margin-right: 25px;
     cursor:pointer;
